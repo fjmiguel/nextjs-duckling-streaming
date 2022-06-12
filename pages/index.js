@@ -1,5 +1,6 @@
 import { gql, GraphQLClient } from 'graphql-request';
 import Image from "next/image";
+import Section from "../components/Section";
 
 export const getStaticProps = async () => {
   const url = `${process.env.GRAPH_CMS_ENDPOINT}${process.env.GRAPH_CMS_ENVIRONMENT}`;
@@ -41,7 +42,6 @@ export const getStaticProps = async () => {
 
 const Home = ({ videos }) => {
   const randomVideo = (videos) => {
-    console.log(videos);
     return videos[Math.floor(Math.random() * videos.length)];
   };
 
@@ -59,7 +59,12 @@ const Home = ({ videos }) => {
           />
         </div>
         <div className="video-feed">
-
+          <Section genre={'Classic'} />
+          <Section genre={'Thriller'} />
+          <Section genre={'Drama'} />
+          <Section genre={'Family'} />
+          <Section genre={'Adventure'} />
+          <Section genre={'Super Heroes'} />
         </div>
       </div>
     </>
