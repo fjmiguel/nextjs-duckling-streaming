@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ##  Next.js Duckling Service Streaming portal
 
-Streaming portal based on Next.js created for educational purposes.
+Streaming portal project using Next.js and [GraphCMS](https://graphcms.com) for educational purposes.
 
 ## Getting Started
 
