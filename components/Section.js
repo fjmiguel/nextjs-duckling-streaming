@@ -1,8 +1,22 @@
-const Section = ({ genre }) => {
+import Link from "next/link";
+import Card from "./Card";
+
+const Section = ({ genre, videos }) => {
   return (
-    <div>
-      <h3>{genre}</h3>
-    </div>
+    <>
+      <div className="section">
+        <h3>{genre}</h3>
+        <div className="video-feed">
+          {videos.map((video) => {
+            return <Link href={`/video/${video.slug}`} key={video.id}>
+              <a>
+                <Card thumbnail={video.thumbnail}/>
+              </a>
+            </Link>
+          })}
+        </div>
+      </div>
+    </>
   )
 };
 

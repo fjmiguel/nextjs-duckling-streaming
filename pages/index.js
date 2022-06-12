@@ -30,28 +30,36 @@ export const getStaticProps = async () => {
     }
   `;
 
+  const randomVideo = (videos) => {
+    return videos[Math.floor(Math.random() * videos.length)];
+  };
+
   const data = await graphQLClient.request(query);
   const videos = data.videos;
 
+  const highlitedVideo = randomVideo(videos);
+
   return {
     props: {
-      videos
+      videos,
+      highlitedVideo
     }
   }
 };
 
-const Home = ({ videos }) => {
-  const randomVideo = (videos) => {
-    return videos[Math.floor(Math.random() * videos.length)];
-  };
+const Home = ({ videos, highlitedVideo }) => {
+
+  const filterVideos = (videos, genre) => {
+    return videos.filter((video) => video.tags.includes(genre));
+  }
 
   return (
     <>
       <div className="app">
         <div className="main-video">
           <Image
-            src={randomVideo(videos).thumbnail.url}
-            alt={randomVideo(videos).title}
+            src={highlitedVideo.thumbnail.url}
+            alt={highlitedVideo.title}
             layout="responsive"
             width={500}
             height={500}
@@ -59,12 +67,13 @@ const Home = ({ videos }) => {
           />
         </div>
         <div className="video-feed">
-          <Section genre={'Classic'} />
-          <Section genre={'Thriller'} />
-          <Section genre={'Drama'} />
-          <Section genre={'Family'} />
-          <Section genre={'Adventure'} />
-          <Section genre={'Super Heroes'} />
+          <Section genre={'All'} videos={videos} />
+          <Section genre={'Classic'} videos={filterVideos(videos, 'classic')} />
+          <Section genre={'Thriller'} videos={filterVideos(videos, 'thriller')} />
+          <Section genre={'Drama'} videos={filterVideos(videos, 'drama')} />
+          <Section genre={'Family'} videos={filterVideos(videos, 'family')} />
+          <Section genre={'Adventure'} videos={filterVideos(videos, 'adventure')} />
+          <Section genre={'Super Heroes'} videos={filterVideos(videos, 'super heroes')} />
         </div>
       </div>
     </>
