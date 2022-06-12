@@ -1,4 +1,5 @@
 import { gql, GraphQLClient } from 'graphql-request';
+import Image from "next/image";
 
 export const getStaticProps = async () => {
   const url = `${process.env.GRAPH_CMS_ENDPOINT}${process.env.GRAPH_CMS_ENVIRONMENT}`;
@@ -39,9 +40,29 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({ videos }) => {
+  const randomVideo = (videos) => {
+    console.log(videos);
+    return videos[Math.floor(Math.random() * videos.length)];
+  };
+
   return (
-    <div>
-    </div>
+    <>
+      <div className="app">
+        <div className="main-video">
+          <Image
+            src={randomVideo(videos).thumbnail.url}
+            alt={randomVideo(videos).title}
+            layout="responsive"
+            width={500}
+            height={500}
+            sizes="50vw"
+          />
+        </div>
+        <div className="video-feed">
+
+        </div>
+      </div>
+    </>
   )
 };
 
