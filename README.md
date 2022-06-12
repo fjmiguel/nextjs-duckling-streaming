@@ -1,5 +1,9 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+##  Next.js Duck Streaming portal
+
+Project of a streaming portal based on Next.js, for educational purposes.
+
 ## Getting Started
 
 First, run the development server:
