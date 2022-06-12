@@ -2,11 +2,15 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ##  Next.js Duckling Service Streaming portal
 
-Streaming portal project using Next.js and [GraphCMS](https://graphcms.com) for educational purposes.
+Streaming portal project using Next.js and [graphcms](https://graphcms.com) for educational purposes.
 
 ## Getting Started
 
-First, run the development server:
+Create a new file named as .env.local and copy .env.development.local content into it.
+
+Add your GraphCMS endpoint, environment and token values to environment variables on .env.local file.
+
+Run the development server:
 
 ```bash
 npm run dev
