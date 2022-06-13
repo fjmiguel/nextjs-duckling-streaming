@@ -4,6 +4,11 @@ const nextConfig = {
   images: {
     domains: ['media.graphassets.com'],
   },
+  experimental: {
+    images: {
+      layoutRaw: true
+    }
+  }
 }
 
 module.exports = nextConfig
