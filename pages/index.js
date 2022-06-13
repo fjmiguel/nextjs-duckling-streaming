@@ -53,6 +53,14 @@ const Home = ({ videos, highlitedVideo }) => {
     return videos.filter((video) => video.tags.includes(genre));
   }
 
+  const style = {
+    width: '100vw',
+    height: '50vh',
+    overflow: 'hidden',
+    position: 'relative',
+    marginBottom: '50px'
+  };
+
   return (
     <>
       <div className="app">
@@ -60,10 +68,10 @@ const Home = ({ videos, highlitedVideo }) => {
           <Image
             src={highlitedVideo.thumbnail.url}
             alt={highlitedVideo.title}
-            layout="responsive"
+            style={style}
+            layout="raw"
             width={500}
             height={500}
-            sizes="50vw"
           />
         </div>
         <div className="video-feed">
