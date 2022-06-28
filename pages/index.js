@@ -1,5 +1,6 @@
 import { gql, GraphQLClient } from 'graphql-request';
 import Image from "next/image";
+import NavBar from '../components/NavBar';
 import Section from "../components/Section";
 
 export const getStaticProps = async () => {
@@ -53,6 +54,10 @@ const Home = ({ videos, highlitedVideo }) => {
     return videos.filter((video) => video.tags.includes(genre));
   }
 
+  const unSeenVideos = (videos) => {
+    return videos.filter(video => Boolean(video.seen) === false);
+  };
+
   const style = {
     width: '100vw',
     height: '50vh',
@@ -63,6 +68,7 @@ const Home = ({ videos, highlitedVideo }) => {
 
   return (
     <>
+    <NavBar />
       <div className="app">
         <div className="main-video">
           <Image
@@ -75,6 +81,7 @@ const Home = ({ videos, highlitedVideo }) => {
           />
         </div>
         <div className="video-feed">
+          <Section genre={'Recommended for you'} videos={unSeenVideos(videos)} />
           <Section genre={'All'} videos={videos} />
           <Section genre={'Classic'} videos={filterVideos(videos, 'classic')} />
           <Section genre={'Thriller'} videos={filterVideos(videos, 'thriller')} />
