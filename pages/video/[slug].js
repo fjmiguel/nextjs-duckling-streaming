@@ -54,13 +54,13 @@ const Video = ({ video }) => {
   const [watching, setWatching] = useState(false)
   return (
     <>
-      <Image
+      {!watching && <Image
         src={video.thumbnail.url}
         alt={video.title}
-        className='video-image'
-        layout='fill'
-      />
-      <div className='info'>
+        className={"video-image"}
+        layout={"fill"}
+      />}
+      {!watching && <div className='info'>
         <p>{video.tags.join(', ')}</p>
         <p>{video.description}</p>
         <Link href={`/`}><a>go back</a></Link>
@@ -70,12 +70,18 @@ const Video = ({ video }) => {
             watching ? setWatching(false) : setWatching(true)
           }}
         >PLAY</button>
-      </div>
+      </div>}
       {watching && (
         <video width="100%" controls>
           <source src={video.mp4.url} type="video/mp4" />
         </video>
       )}
+      <div className={"info-footer"}
+        onClick={() => {
+          watching ? setWatching(false) : null
+        }}
+      >
+      </div>
     </>
   )
 };
